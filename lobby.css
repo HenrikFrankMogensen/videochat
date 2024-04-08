@@ -14,8 +14,7 @@ body{
   transform: translate(-50%, -50%);
 }
 
-
-#form__container__header {
+#form__container__header{
   border-radius: 10px 10px 0 0;
   padding: 30px;
   text-align: center;
