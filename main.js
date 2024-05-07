@@ -69,14 +69,12 @@ let handleMessageFromPeer = async (message, MemberId) => {
     if(message.type === 'answer'){
         addAnswer(message.answer)
     }
-
+    
     if(message.type === 'candidate'){
         if(peerConnection){
             peerConnection.addIceCandidate(message.candidate)
         }
     }
-
-
 }
 
 let handleUserJoined = async (MemberId) => {
@@ -94,9 +92,9 @@ let createPeerConnection = async (MemberId) => {
 
     document.getElementById('user-1').classList.add('smallFrame')
 
-
+    // Maked audio true
     if(!localStream){
-        localStream = await navigator.mediaDevices.getUserMedia({video:true, audio:false})
+        localStream = await navigator.mediaDevices.getUserMedia({video:true, audio:true})
         document.getElementById('user-1').srcObject = localStream
     }
 
@@ -165,6 +163,7 @@ let toggleCamera = async () => {
 
 let toggleMic = async () => {
     let audioTrack = localStream.getTracks().find(track => track.kind === 'audio')
+    console.log(audioTrack)
 
     if(audioTrack.enabled){
         audioTrack.enabled = false
