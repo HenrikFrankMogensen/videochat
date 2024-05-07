@@ -98,7 +98,7 @@ let createPeerConnection = async (MemberId) => {
         document.getElementById('user-1').srcObject = localStream
     }
 
-    localStream.getTracks().forEach((track) => {
+    await localStream.getTracks().forEach((track) => {
         peerConnection.addTrack(track, localStream)
     })
 
